@@ -1,0 +1,21 @@
+<li><%= render "share", :document => @document %></li>
+<li>
+  <%= link_to I18n.t('exploreuk.tools.full_record'), details_catalog_path(:id => @document), {:id => 'detailsLink', :data => {:ajax_modal => "trigger"}} %>
+</li>
+<li>
+  <%= link_to I18n.t('exploreuk.tools.statistics'), catalog_path(:id => @document) %>
+</li>
+<% if @document[:pdf_url_display] %>
+<li>
+  <%= link_to I18n.t('exploreuk.tools.pdf'), @document[:pdf_url_display].first.to_s %>
+</li>
+<% end %>
+<% if @document[:reference_image_url_s] %>
+<li>
+  <%= link_to I18n.t('exploreuk.tools.download'), download_catalog_path(:id => @document) %>
+</li>
+<% end %>
+<li>
+  <%# stub for mockup %>
+  <%= link_to I18n.t('exploreuk.tools.download_item'), catalog_path(:id => @document) %>
+</li>
