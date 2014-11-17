@@ -7,15 +7,31 @@
 </li>
 <% if @document[:pdf_url_display] %>
 <li>
-  <%= link_to I18n.t('exploreuk.tools.pdf'), @document[:pdf_url_display].first.to_s %>
+  <%# stub for mockup %>
+  <%= link_to catalog_path(:id => @document) do -%>
+    <%= image_tag("thumbs.png") -%>
+    <%= I18n.t('exploreuk.tools.thumbs') -%>
+  <% end -%>
+</li>
+<li>
+  <%= link_to @document[:pdf_url_display].first.to_s do -%>
+    <%= image_tag "pdf.png" -%>
+    <%= I18n.t('exploreuk.tools.pdf') -%>
+  <% end -%>
 </li>
 <% end %>
 <% if @document[:reference_image_url_s] %>
 <li>
-  <%= link_to I18n.t('exploreuk.tools.download'), download_catalog_path(:id => @document) %>
+  <%= link_to download_catalog_path(:id => @document) do -%>
+    <%= image_tag "download.png" -%>
+    <%= I18n.t('exploreuk.tools.download') -%>
+  <% end -%>
 </li>
 <% end %>
 <li>
   <%# stub for mockup %>
-  <%= link_to I18n.t('exploreuk.tools.download_item'), catalog_path(:id => @document) %>
+  <%= link_to catalog_path(:id => @document) do -%>
+    <%= image_tag "pdf.png" -%>
+    <%= I18n.t('exploreuk.tools.download_item') -%>
+  <% end -%>
 </li>

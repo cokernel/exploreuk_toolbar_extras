@@ -54,6 +54,10 @@ describe "ExploreUK Toolbar Extras", :type => :feature do
       it "includes a PDF link" do
         expect(page).to have_link(I18n.t('exploreuk.tools.pdf'), href: "http://example.com")
       end
+
+      it "includes a thumbnail link" do
+        expect(page).to have_link(I18n.t('exploreuk.tools.thumbs'))
+      end
     end
 
     context "Documents with downloadable content" do
