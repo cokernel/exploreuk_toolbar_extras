@@ -85,6 +85,15 @@ describe "ExploreUK Toolbar Extras", :type => :feature do
       expect(page).to have_content "Nightgown of the sullen moon"
     end
   end
+
+  context "Thumbs action" do
+    let (:ocelot_thumbs) { "/catalog/sample_book_ocelot/thumbs" }
+
+    it "exists" do
+      expect{visit "#{ocelot_thumbs}.html"}.to_not raise_error
+      expect{visit "#{ocelot_thumbs}.json"}.to_not raise_error
+    end
+  end
 end
 
 def load_sample_documents

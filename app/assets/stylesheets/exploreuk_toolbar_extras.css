@@ -1,0 +1,17 @@
+.thumbs-li {
+  list-style-type: none;
+  width: 150px;
+  height: 225px;
+  margin: 5px;
+  overflow: hidden;
+  float: left;
+}
+
+.thumbs-img {
+  height: auto;
+  max-width: 100%;
+}
+
+.thumbs-li:hover {
+  background-color: #ffd;
+}

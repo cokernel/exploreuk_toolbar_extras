@@ -26,5 +26,25 @@ module ExploreukToolbarExtras
                   type: "image/jpeg")
       end
     end
+
+    # definitely ExploreUK-specific
+    def thumbs
+      (response, @document) = get_solr_response_for_doc_id
+      rows = 10
+      start = params[:page].to_i || 0
+      object_id_s = @document[:object_id_s]
+      @response = find({
+        :start => rows * start,
+        :fq => "object_id_s:#{object_id_s}",
+        :sort => "global_sort_key_i asc",
+      })
+
+      respond_to do |format|
+        format.html {setup_next_and_previous_documents}
+        format.json do
+          render json: @response
+        end
+      end
+    end
   end
 end

@@ -9,5 +9,9 @@ describe "Routing" do
     it "has a path for downloading content related to an individual item" do
       expect(:get => "/catalog/111/download").to route_to(:controller => "catalog", :action => "download", :id => "111")
     end
+
+    it "has a path for the thumbnails for a compound item" do
+      expect(:get => "/catalog/111/thumbs").to route_to(:controller => "catalog", :action => "thumbs", :id => "111")
+    end
   end
 end

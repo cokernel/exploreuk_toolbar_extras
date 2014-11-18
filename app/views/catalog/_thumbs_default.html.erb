@@ -1,0 +1,71 @@
+<%= render_document_heading(document, :tag => :h1) %>
+
+<ul id="thumbs-container">
+</ul>
+<div id="thumbs-waypoint"></div>
+
+<script>
+// This makes stronger assumptions about Rails paths than it should.
+$(function () {
+  function insertThumbnails(container, docs, limit) {
+    var url, thumb;
+    for (var i = 0; i < limit; i += 1) {
+      doc = docs[i];
+      url = '/catalog/' + docs[i].id;
+      thumb = docs[i].thumbnail_url_s;
+      $(container).append(
+        '<li class="thumbs-li ' + liClasses + '"><a href="' + url + '"><img class="thumbs-img" src="' + thumb + '"/></a></li>'
+      );
+    }
+    maybeLoadMoreThumbnails(container);
+  }
+
+  function loadMoreThumbnails(container, docs, limit) {
+    if (page < maxPage) {
+      page += 1;
+      thumbs_url = '/catalog/' + doc_id + '/thumbs.json/?page=' + page;
+      loadThumbnails(container);
+    }
+  }
+
+  function loadThumbnails(container) {
+    $.ajax(
+      thumbs_url,
+      {
+        dataType: 'json',
+        success: function (data) {
+          maxPage = Math.ceil(data.response.numFound / limit);
+          insertThumbnails(container, data.response.docs, 10);
+        }
+      }
+    );
+  }
+
+  function maybeLoadMoreThumbnails(container) {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - offset) {
+      loadMoreThumbnails(container);
+    }
+  }
+
+  var limit = 10;
+  var maxPage = 0;
+  var doc_id = "<%= document[:id] %>";
+  var page = 0;
+  var thumbs_url = '/catalog/' + doc_id + '/thumbs.json/?page=' + page;
+  var container = '#thumbs-container';
+  var offset = 100;
+  var liClasses = "col-lg-2 col-md-2 col-sm-3 col-xs-4";
+  var waypoint = "#thumbs-waypoint";
+  loadThumbnails(container);
+
+  $(window).scroll(function () {
+    maybeLoadMoreThumbnails(container);
+    /*
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - offset) {
+      loadMoreThumbnails(container);
+    }
+    */
+  });
+});
+</script>
+

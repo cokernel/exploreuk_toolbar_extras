@@ -44,8 +44,26 @@
   :fine_field_s: "sample_book_ocelots"
   :title_t: "Ocelots coarse_test"
   :author_t: "Ocelotta the Magnificent"
+  :global_sort_key_i: 0 
 
 - :id: "sample_book_ocelots_1"
-  :coarse_field_b: true
+  :coarse_field_b: false
   :fine_field_s: "sample_book_ocelots"
   :title_t: "Ocelots coarse_test (page 1)"
+  :thumbnail_url_s: http://localhost/ocelot1.jpg
+  :global_sort_key_i: 1 
+
+- :id: "sample_book_ocelots_2_1"
+  :coarse_field_b: false
+  :fine_field_s: "sample_book_ocelots"
+  :title_t: "Ocelots coarse_test (page 2.1)"
+  :thumbnail_url_s: http://localhost/ocelot21.jpg
+  :global_sort_key_i: 20001
+  
+- :id: "sample_book_ocelots_2_2"
+  :coarse_field_b: false
+  :fine_field_s: "sample_book_ocelots"
+  :title_t: "Ocelots coarse_test (page 2.2"
+  :thumbnail_url_s: http://localhost/ocelot22.jpg
+  :global_sort_key_i: 20002
+  

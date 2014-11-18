@@ -13,6 +13,7 @@ module ExploreukToolbarExtras
         [
           "details",
           "download",
+          "thumbs",
         ].each do |action|
           get "#{primary_resource}/:id/#{action}", to: "#{primary_resource}##{action}", as: :"#{action}_#{primary_resource}"
         end
