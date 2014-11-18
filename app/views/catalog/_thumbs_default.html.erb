@@ -13,9 +13,11 @@ $(function () {
       doc = docs[i];
       url = '/catalog/' + docs[i].id;
       thumb = docs[i].thumbnail_url_s;
-      $(container).append(
-        '<li class="thumbs-li ' + liClasses + '"><a href="' + url + '"><img class="thumbs-img" src="' + thumb + '"/></a></li>'
-      );
+      if (thumb) {
+        $(container).append(
+          '<li class="thumbs-li ' + liClasses + '"><a href="' + url + '"><img class="thumbs-img" src="' + thumb + '"/></a></li>'
+        );
+      }
     }
     maybeLoadMoreThumbnails(container);
   }
